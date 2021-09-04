@@ -4,6 +4,6 @@ import { router } from './routes'
 const app = express()
 
 app.use(express.json())
-app.use(router)
+app.use('/v1', router)
 
 export { app }
