@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { ZipcodeService } from "../services/ZipcodeService"
+import { ZipcodeService } from '../services/ZipcodeService'
 
 export class ZipcodeController {
   constructor (

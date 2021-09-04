@@ -1,7 +1,7 @@
 import cep from 'cep-promise'
 
 export class ZipcodeService {
-  private async tryFetch(zipcode: string) {
+  private async tryFetch(zipcode: string): Promise<IAddress> {
     let address = null
     let size = zipcode.length
 
@@ -17,10 +17,16 @@ export class ZipcodeService {
       throw new Error('CEP inválido.')
     }
 
-    return address
+    return {
+      city: address.city,
+      neighborhood: address.neighborhood,
+      state: address.state,
+      street: address.street,
+      zipcode: address.cep
+    }
   }
 
-  async fetchAddress(zipcode: string) {
+  async fetchAddress(zipcode: string): Promise<IAddress> {
     zipcode = zipcode.replace(/[^\d]+/g, '')
 
     if (zipcode.length !== 8) {
