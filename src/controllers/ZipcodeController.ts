@@ -10,7 +10,7 @@ export class ZipcodeController {
     try {
       const { zipcode } = request.params
 
-      const address = await this.zipcodeService.find(zipcode)
+      const address = await this.zipcodeService.fetchAddress(zipcode)
 
       return response.status(200).send(address)
     } catch (error) {
