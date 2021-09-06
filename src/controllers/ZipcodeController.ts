@@ -2,15 +2,11 @@ import { Request, Response } from 'express'
 import { ZipcodeService } from '../services/ZipcodeService'
 
 export class ZipcodeController {
-  constructor (
-    private zipcodeService: ZipcodeService
-  ) {}
-
-  async index(request: Request, response: Response): Promise<Response> {
+  static async index(request: Request, response: Response): Promise<Response> {
     try {
       const { zipcode } = request.params
 
-      const address = await this.zipcodeService.fetchAddress(zipcode)
+      const address: IAddress = await ZipcodeService.fetchAddress(zipcode)
 
       return response.status(200).send(address)
     } catch (error) {
