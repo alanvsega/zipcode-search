@@ -70,7 +70,7 @@ Or in the OpenAPI documentation, the authorization must be done before execute t
 ## Create an .env file
 
 ```sh
-mv .env.example .env
+cp .env.example .env
 ```
 
 Don't forget to update the `API_KEY` param with a secure key.
