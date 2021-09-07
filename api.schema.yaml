@@ -1,0 +1,62 @@
+openapi: 3.0.0
+info:
+    title: zipcode-search
+    description: Luizalabs challenge. Service that provides zip code search.
+    contact:
+        email: alanvsega@gmail.com
+    version: 1.0.0
+servers:
+    - url: http://localhost:3333/api/v1
+      description: Test API
+paths:
+    /zipcode/{zipcode}:
+        get:
+            summary: Find an address by its zip code.
+            description: Returns the address, when zip code is valid.
+            tags:
+                - Address
+            parameters:
+                - name: zipcode
+                  in: path
+                  description: The zip code.
+                  required: true
+                  schema:
+                      type: string
+            security:
+                - ApiKeyAuth: []
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                $ref: "#/components/schemas/Address"
+                "400":
+                    description: Invalid zipcode.
+                "401":
+                    description: Invalid API Key.
+                "404":
+                    description: Zipcode not found.
+components:
+    schemas:
+        Address:
+            type: object
+            properties:
+                city:
+                    type: string
+                neighborhood:
+                    type: string
+                state:
+                    type: string
+                street:
+                    type: string
+                zipcode:
+                    type: string
+    securitySchemes:
+        ApiKeyAuth:
+            type: apiKey
+            in: header
+            name: X-API-KEY
+security:
+    - ApiKeyAuth: []
