@@ -3,7 +3,9 @@ import { IAddress } from "../models/Address"
 import { IResponseError } from "../models/Errors"
 
 /**
- * 
+ * Using require instead import due to lib
+ * incompatibilities with Typescript. More
+ * details: https://github.com/BrasilAPI/cep-promise/issues/212.
  */
 const cep = require('cep-promise')
 

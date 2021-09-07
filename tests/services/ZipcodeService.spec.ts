@@ -3,7 +3,9 @@ import { ZipcodeService } from '../../src/services/ZipcodeService'
 import { IAddress } from '../../src/models/Address'
 
 /**
- * 
+ * Using require instead import due to lib
+ * incompatibilities with Typescript. More
+ * details: https://github.com/BrasilAPI/cep-promise/issues/212.
  */
 const cep = require('cep-promise')
 
