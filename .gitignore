@@ -1,5 +1,6 @@
 dist
 coverage
+logs
 node_modules
 yarn.lock
 .env
