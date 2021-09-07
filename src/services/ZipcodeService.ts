@@ -1,4 +1,11 @@
-import cep, { CEP } from 'cep-promise'
+import { CEP } from 'cep-promise'
+import { IAddress } from "../models/Address"
+import { IResponseError } from "../models/Errors"
+
+/**
+ * 
+ */
+const cep = require('cep-promise')
 
 export class ZipcodeService {
   private static async tryFetch(zipcode: string): Promise<IAddress> {
@@ -14,7 +21,10 @@ export class ZipcodeService {
     }
 
     if (null === address) {
-      throw new Error('CEP inválido.')
+      const error = new Error('CEP não encontrado.') as IResponseError
+      error.status = 404
+
+      throw error
     }
 
     return {
@@ -30,7 +40,10 @@ export class ZipcodeService {
     zipcode = zipcode.replace(/[^\d]+/g, '')
 
     if (zipcode.length !== 8) {
-      throw new Error('CEP inválido.')
+      const error = new Error('CEP inválido.') as IResponseError
+      error.status = 400
+
+      throw error
     }
 
     return await this.tryFetch(zipcode)

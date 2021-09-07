@@ -3,6 +3,6 @@ import { ZipcodeController } from '../controllers/ZipcodeController';
 
 const ZipcodeRoutes = Router()
 
-ZipcodeRoutes.get('/zipcode/:zipcode', ZipcodeController.index)
+ZipcodeRoutes.get('/v1/zipcode/:zipcode', ZipcodeController.index)
 
 export { ZipcodeRoutes }

@@ -1,9 +1,11 @@
 export default {
   clearMocks: true,
   collectCoverageFrom: [
-    'src/**/*.ts'
+    'src/**/*.ts',
+    '!src/server.ts',
+    '!src/models/*.ts'
   ],
-  coverageDirectory: 'tests/coverage',
+  coverageDirectory: 'coverage',
   coverageProvider: 'v8',
   coverageReporters: [
     'json',
