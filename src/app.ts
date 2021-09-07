@@ -9,7 +9,7 @@ import { Authorization } from './middlewares/Authorization'
 import { ZipcodeRoutes } from './routes/ZipcodeRoutes'
 
 const app = express()
-const swaggerDocs = yaml.load(path.join(__dirname, '../api.schema.yaml'))
+const swaggerDocs = yaml.load(path.join(__dirname, '..', 'docs', 'api.schema.yaml'))
 
 app.use(express.json())
 
